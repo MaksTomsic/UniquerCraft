@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="sl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Unique Crafter</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      padding: 20px;
+      margin: 0;
+      background: url('slike/ozadje_html.jpg') no-repeat center center/cover;
+      position: relative;
+      scroll-behavior: smooth;
+    }
+
+    body::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(255, 255, 255, 0.5);
+      backdrop-filter: blur(8px);
+      z-index: -1;
+    }
+
+    .navbar {
+      background: rgba(244, 244, 244, 0.8);
+      padding: 10px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 30px;
+      border-radius: 10px;
+      flex-wrap: wrap;
+      margin-bottom: 20px;
+    }
+
+    .navbar a {
+      text-decoration: none;
+      color: black;
+      padding: 10px 15px;
+      border-radius: 5px;
+      transition: background 0.3s;
+    }
+
+    .navbar a:hover {
+      background: rgba(200, 200, 200, 0.8);
+    }
+
+    .section {
+      background: rgba(255, 255, 255, 0.8);
+      padding: 20px;
+      margin: 20px auto;
+      border-radius: 10px;
+      max-width: 800px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      opacity: 0;
+      transform: translateY(30px);
+      transition: all 0.6s ease;
+    }
+
+    .section.active {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .footer {
+      margin-top: 20px;
+      background: rgba(244, 244, 244, 0.8);
+      padding: 10px;
+      font-weight: bold;
+      border-radius: 10px;
+    }
+
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 15px;
+    }
+
+    .gallery img {
+      width: 100%;
+      border-radius: 10px;
+      box-shadow: 0 0 6px rgba(0,0,0,0.2);
+      transition: transform 0.3s ease;
+    }
+
+    .gallery img:hover {
+      transform: scale(1.05);
+    }
+
+    table {
+      border-collapse: collapse;
+      width: 80%;
+      margin: 0 auto;
+      background: white;
+    }
+
+    th, td {
+      border: 1px solid #ccc;
+      padding: 10px;
+      text-align: center;
+    }
+
+    .cta-button {
+      background-color: #4CAF50;
+      color: white;
+      padding: 12px 25px;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: bold;
+      transition: background 0.3s;
+      display: inline-block;
+      margin-top: 10px;
+    }
+
+    .cta-button:hover {
+      background-color: #388E3C;
+    }
+
+    .hero {
+      background: rgba(255,255,255,0.7);
+      padding: 60px 20px;
+      border-radius: 15px;
+      margin-bottom: 30px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="navbar">
+    <a href="#storitev">🛠 Storitve</a>
+    <a href="#galerija">📸 Galerija</a>
+    <a href="#cenik">💶 Cenik</a>
+    <a href="#kontakt">📞 Kontakt</a>
+    <a href="#nagradna">🎁 Nagradna igra</a>
+  </div>
+
+  <div class="hero reveal">
+    <h1>Dobrodošli pri Unique Crafter</h1>
+    <p>Urejanje okolice z občutkom za naravo in estetiko</p>
+    <a href="#storitev" class="cta-button">Oglej si naše storitve</a>
+  </div>
+
+  <div class="section reveal" id="storitev">
+    <h2>Naše storitve</h2>
+    <ul style="text-align:left; max-width:600px; margin:0 auto;">
+      <li>🌱 Košnja trave</li>
+      <li>✂️ Obrezovanje žive meje in dreves</li>
+      <li>🌸 Zasaditev rastlin</li>
+      <li>🪵 Izdelava unikatnih lesenih izdelkov</li>
+      <li>🏡 Urejanje vrtov, dvorišč in okolice</li>
+      <li>🧹 Čiščenje in vzdrževanje zunanjih površin</li>
+    </ul>
+  </div>
+
+  <div class="section reveal" id="galerija">
+    <h2>Galerija</h2>
+    <div class="gallery">
+      <img src="slike/OKOLICA1.png" alt="Urejena okolica">
+      <img src="slike/OKOLICA2.png" alt="Zasaditev">
+      <img src="slike/LES1.png" alt="Leseni izdelek">
+      <img src="slike/LES2.png" alt="Unikaten izdelek">
+    </div>
+  </div>
+
+  <div class="section reveal" id="cenik">
+    <h2>Cenik</h2>
+    <table>
+      <tr><th>Storitev</th><th>Cena</th></tr>
+      <tr><td>Košnja trave</td><td>10€/100m²</td></tr>
+      <tr><td>Obrezovanje žive meje</td><td>15€/m</td></tr>
+      <tr><td>Obrezovanje visokih dreves</td><td>Po dogovoru</td></tr>
+      <tr><td>Zasaditev rastlin</td><td>Po dogovoru</td></tr>
+      <tr><td>Unikatni leseni izdelki</td><td>Po dogovoru</td></tr>
+    </table>
+  </div>
+
+  <div class="section reveal" id="kontakt">
+    <h2>Kontaktirajte nas</h2>
+    <p>📞 Telefon: +386 40 840 401</p>
+    <p>📧 E-pošta: unique.craft@gmail.com</p>
+    <p>📸 Instagram: <a href="https://instagram.com/uniquer_craft" target="_blank">@uniquer_craft</a></p>
+    <p>📘 Facebook: <a href="https://facebook.com/UniquerCraft" target="_blank">Uniquer Craft</a></p>
+  </div>
+
+  <div class="section reveal" id="nagradna">
+    <h2>🎁 Nagradna igra</h2>
+    <p>Izpolnite kratko anketo in si priborite popust!</p>
+    <a href="nagradna_igra.html" class="cta-button">Sodeluj zdaj</a>
+  </div>
+
+  <div class="footer">
+    © 2025 Maks Tomšič. Vse pravice pridržane.
+  </div>
+
+  <script>
+    function revealOnScroll() {
+      const reveals = document.querySelectorAll('.reveal');
+      for (let i = 0; i < reveals.length; i++) {
+        const windowHeight = window.innerHeight;
+        const elementTop = reveals[i].getBoundingClientRect().top;
+        const revealPoint = 100;
+
+        if (elementTop < windowHeight - revealPoint) {
+          reveals[i].classList.add('active');
+        } else {
+          reveals[i].classList.remove('active');
+        }
+      }
+    }
+
+    window.addEventListener('scroll', revealOnScroll);
+    window.addEventListener('load', revealOnScroll);
+  </script>
+</body>
+</html>
