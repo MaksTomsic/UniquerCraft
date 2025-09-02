@@ -5,14 +5,21 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Unique Crafter</title>
   <style>
+    * {
+      box-sizing: border-box;
+    }
+
     body {
       font-family: Arial, sans-serif;
-      text-align: center;
-      padding: 20px;
       margin: 0;
-      background: url('slike/ozadje_html.jpg') no-repeat center center/cover;
+      padding: 0;
+      background: url('slike/trava.webp') no-repeat center center/cover;
       position: relative;
       scroll-behavior: smooth;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-height: 100vh;
     }
 
     body::before {
@@ -22,7 +29,7 @@
       left: 0;
       width: 100%;
       height: 100%;
-      background: rgba(255, 255, 255, 0.5);
+      background: rgba(255, 255, 255, 0.3);
       backdrop-filter: blur(8px);
       z-index: -1;
     }
@@ -36,7 +43,9 @@
       gap: 30px;
       border-radius: 10px;
       flex-wrap: wrap;
-      margin-bottom: 20px;
+      margin: 20px auto;
+      width: 90%;
+      max-width: 1000px;
     }
 
     .navbar a {
@@ -49,6 +58,36 @@
 
     .navbar a:hover {
       background: rgba(200, 200, 200, 0.8);
+    }
+
+    .hero {
+      background: rgba(255,255,255,0.7);
+      padding: 60px 20px;
+      border-radius: 15px;
+      margin: auto;
+      max-width: 1000px;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      min-height: 60vh;
+    }
+
+    .cta-button {
+      background-color: #4CAF50;
+      color: white;
+      padding: 12px 25px;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: bold;
+      transition: background 0.3s;
+      display: inline-block;
+      margin-top: 10px;
+    }
+
+    .cta-button:hover {
+      background-color: #388E3C;
     }
 
     .section {
@@ -68,12 +107,11 @@
       transform: translateY(0);
     }
 
-    .footer {
-      margin-top: 20px;
-      background: rgba(244, 244, 244, 0.8);
-      padding: 10px;
+    .section h2 {
+      font-size: 2rem;
       font-weight: bold;
-      border-radius: 10px;
+      margin-bottom: 15px;
+      text-shadow: 1px 1px 2px rgba(0,0,0,0.2);
     }
 
     .gallery {
@@ -82,14 +120,14 @@
       gap: 15px;
     }
 
-    .gallery img {
+    .gallery a img {
       width: 100%;
       border-radius: 10px;
-      box-shadow: 0 0 6px rgba(0,0,0,0.2);
+      box-shadow: 0 0 6px rgba(0,0,0,0.1);
       transition: transform 0.3s ease;
     }
 
-    .gallery img:hover {
+    .gallery a img:hover {
       transform: scale(1.05);
     }
 
@@ -106,27 +144,45 @@
       text-align: center;
     }
 
-    .cta-button {
-      background-color: #4CAF50;
-      color: white;
-      padding: 12px 25px;
-      border-radius: 8px;
-      text-decoration: none;
+    .footer {
+      margin-top: 20px;
+      background: rgba(244, 244, 244, 0.8);
+      padding: 10px;
       font-weight: bold;
-      transition: background 0.3s;
-      display: inline-block;
-      margin-top: 10px;
+      border-radius: 10px;
+      width: 90%;
+      max-width: 1000px;
+      text-align: center;
     }
 
-    .cta-button:hover {
-      background-color: #388E3C;
-    }
+    @media (max-width: 600px) {
+      .navbar {
+        flex-direction: column;
+        gap: 10px;
+      }
 
-    .hero {
-      background: rgba(255,255,255,0.7);
-      padding: 60px 20px;
-      border-radius: 15px;
-      margin-bottom: 30px;
+      .hero {
+        padding: 40px 10px;
+        min-height: auto;
+      }
+
+      .cta-button {
+        padding: 10px 20px;
+        font-size: 14px;
+      }
+
+      table {
+        width: 100%;
+        font-size: 14px;
+      }
+
+      .gallery {
+        grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+      }
+
+      .section h2 {
+        font-size: 1.6rem;
+      }
     }
   </style>
 </head>
@@ -137,7 +193,6 @@
     <a href="#galerija">📸 Galerija</a>
     <a href="#cenik">💶 Cenik</a>
     <a href="#kontakt">📞 Kontakt</a>
-    <a href="#nagradna">🎁 Nagradna igra</a>
   </div>
 
   <div class="hero reveal">
@@ -161,10 +216,10 @@
   <div class="section reveal" id="galerija">
     <h2>Galerija</h2>
     <div class="gallery">
-      <img src="slike/OKOLICA1.png" alt="Urejena okolica">
-      <img src="slike/OKOLICA2.png" alt="Zasaditev">
-      <img src="slike/LES1.png" alt="Leseni izdelek">
-      <img src="slike/LES2.png" alt="Unikaten izdelek">
+      <a href="galerija-vec.html" target="_blank"><img src="slike/OKOLICA1.png" alt="Urejena okolica"></a>
+      <a href="galerija-vec.html" target="_blank"><img src="slike/OKOLICA2.png" alt="Zasaditev"></a>
+      <a href="galerija-vec.html" target="_blank"><img src="slike/LES1.png" alt="Leseni izdelek"></a>
+      <a href="galerija-vec.html" target="_blank"><img src="slike/LES2.png" alt="Unikaten izdelek"></a>
     </div>
   </div>
 
@@ -186,12 +241,6 @@
     <p>📧 E-pošta: unique.craft@gmail.com</p>
     <p>📸 Instagram: <a href="https://instagram.com/uniquer_craft" target="_blank">@uniquer_craft</a></p>
     <p>📘 Facebook: <a href="https://facebook.com/UniquerCraft" target="_blank">Uniquer Craft</a></p>
-  </div>
-
-  <div class="section reveal" id="nagradna">
-    <h2>🎁 Nagradna igra</h2>
-    <p>Izpolnite kratko anketo in si priborite popust!</p>
-    <a href="nagradna_igra.html" class="cta-button">Sodeluj zdaj</a>
   </div>
 
   <div class="footer">
