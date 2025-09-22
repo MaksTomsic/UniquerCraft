@@ -5,185 +5,225 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Unique Crafter</title>
   <style>
-    * {
-      box-sizing: border-box;
-    }
+  * { box-sizing: border-box; }
 
-    body {
-      font-family: Arial, sans-serif;
-      margin: 0;
-      padding: 0;
-      background: url('slike/trava.webp') no-repeat center center/cover;
-      position: relative;
-      scroll-behavior: smooth;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      min-height: 100vh;
-    }
+  html {
+    height: 100%;
+    background: url('slike/trava.webp') no-repeat center center fixed;
+    background-size: cover;
+  }
 
-    body::before {
-      content: "";
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(255, 255, 255, 0.3);
-      backdrop-filter: blur(8px);
-      z-index: -1;
-    }
+  body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    position: relative;
+    scroll-behavior: smooth;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100vh;
+    background: transparent;
+  }
 
-    .navbar {
-      background: rgba(244, 244, 244, 0.8);
-      padding: 10px;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      gap: 30px;
-      border-radius: 10px;
-      flex-wrap: wrap;
-      margin: 20px auto;
-      width: 90%;
-      max-width: 1000px;
-    }
+  body::before {
+    content: "";
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: rgba(255, 255, 255, 0.3);
+    backdrop-filter: blur(8px);
+    z-index: -1;
+  }
 
-    .navbar a {
-      text-decoration: none;
-      color: black;
-      padding: 10px 15px;
-      border-radius: 5px;
-      transition: background 0.3s;
-    }
+  .navbar {
+    background: rgba(244, 244, 244, 0.8);
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+    border-radius: 10px;
+    flex-wrap: wrap;
+    margin: 20px auto;
+    width: 100%;
+  }
 
-    .navbar a:hover {
-      background: rgba(200, 200, 200, 0.8);
-    }
+  .navbar a {
+    text-decoration: none;
+    color: black;
+    padding: 10px 15px;
+    border-radius: 5px;
+    transition: background 0.3s;
+  }
+  .navbar a:hover { background: rgba(200,200,200,0.8); }
 
-    .hero {
-      background: rgba(255,255,255,0.7);
-      padding: 60px 20px;
-      border-radius: 15px;
-      margin: auto;
-      max-width: 1000px;
-      text-align: center;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      min-height: 60vh;
-    }
+  .hero {
+    background: rgba(255,255,255,0.75);
+    padding: 80px 20px;
+    border-radius: 20px;
+    margin: auto;
+    max-width: 1000px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
 
-    .cta-button {
-      background-color: #4CAF50;
-      color: white;
-      padding: 12px 25px;
-      border-radius: 8px;
-      text-decoration: none;
-      font-weight: bold;
-      transition: background 0.3s;
-      display: inline-block;
-      margin-top: 10px;
-    }
+  .hero-title {
+    font-size: 2.5rem;
+    font-weight: bold;
+    animation: fadeInDown 1s ease forwards;
+  }
+  .hero-title span {
+    color: #4CAF50;
+    text-shadow: 0 0 10px rgba(76,175,80,0.6);
+  }
 
-    .cta-button:hover {
-      background-color: #388E3C;
-    }
+  .typing {
+    font-size: 1.3rem;
+    margin-top: 15px;
+    border-right: 2px solid #4CAF50;
+    white-space: nowrap;
+    overflow: hidden;
+    min-height: 1.5em;
+  }
 
-    .section {
-      background: rgba(255, 255, 255, 0.8);
-      padding: 20px;
-      margin: 20px auto;
-      border-radius: 10px;
-      max-width: 800px;
-      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-      opacity: 0;
-      transform: translateY(30px);
-      transition: all 0.6s ease;
-    }
+  .special-btn {
+    margin-top: 25px;
+    background: linear-gradient(135deg, #4CAF50, #81C784);
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+    transition: transform 0.3s, box-shadow 0.3s;
+  }
+  .special-btn:hover {
+    transform: scale(1.08);
+    box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+  }
 
-    .section.active {
-      opacity: 1;
-      transform: translateY(0);
-    }
+  @keyframes fadeInDown {
+    from {opacity:0; transform: translateY(-30px);}
+    to {opacity:1; transform: translateY(0);}
+  }
 
-    .section h2 {
-      font-size: 2rem;
-      font-weight: bold;
-      margin-bottom: 15px;
-      text-shadow: 1px 1px 2px rgba(0,0,0,0.2);
-    }
+  .cta-button {
+    background-color: #4CAF50;
+    color: white;
+    padding: 12px 25px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: background 0.3s;
+    display: inline-block;
+    margin-top: 10px;
+  }
+  .cta-button:hover { background-color: #388E3C; }
 
-    .gallery {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-      gap: 15px;
-    }
+  .section {
+    background: rgba(255,255,255,0.8);
+    padding: 20px;
+    margin: 20px auto;
+    border-radius: 10px;
+    max-width: 800px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.6s ease;
+  }
+  .section.active { opacity:1; transform: translateY(0); }
 
-    .gallery a img {
-      width: 100%;
-      border-radius: 10px;
-      box-shadow: 0 0 6px rgba(0,0,0,0.1);
-      transition: transform 0.3s ease;
-    }
+  .section h2 {
+    font-size: 2rem;
+    font-weight: bold;
+    margin-bottom: 15px;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.2);
+  }
 
-    .gallery a img:hover {
-      transform: scale(1.05);
-    }
+  .gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 15px;
+  }
+  .gallery a img {
+    width: 100%;
+    border-radius: 10px;
+    box-shadow: 0 0 6px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease;
+  }
+  .gallery a img:hover { transform: scale(1.05); }
 
-    table {
-      border-collapse: collapse;
-      width: 80%;
-      margin: 0 auto;
-      background: white;
-    }
+  table {
+    border-collapse: collapse;
+    width: 80%;
+    margin: 0 auto;
+    background: white;
+  }
+  th, td {
+    border: 1px solid #ccc;
+    padding: 10px;
+    text-align: center;
+  }
 
-    th, td {
-      border: 1px solid #ccc;
-      padding: 10px;
-      text-align: center;
-    }
+  .footer {
+    margin-top: auto;
+    background: rgba(244,244,244,0.9);
+    padding: 15px;
+    font-weight: bold;
+    width: 100%;
+    text-align: center;
+    border-radius: 0;
+  }
 
-    .footer {
-      margin-top: 20px;
-      background: rgba(244, 244, 244, 0.8);
-      padding: 10px;
-      font-weight: bold;
-      border-radius: 10px;
-      width: 90%;
-      max-width: 1000px;
-      text-align: center;
-    }
+  @media (max-width:600px){
+    .navbar { flex-direction: column; gap:10px; }
+    .hero { padding:40px 10px; }
+    .cta-button { padding:10px 20px; font-size:14px; }
+    table { width:100%; font-size:14px; }
+    .gallery { grid-template-columns: repeat(auto-fit, minmax(140px,1fr)); }
+    .section h2 { font-size:1.6rem; }
+  }
+  /* 2. Animacija ikon ob hoverju */
+ul li h3 {
+  transition: transform 0.3s, color 0.3s;
+  cursor: default;
+}
+ul li h3:hover {
+  transform: scale(1.05) rotate(-2deg);
+  color: #388E3C;
+}
 
-    @media (max-width: 600px) {
-      .navbar {
-        flex-direction: column;
-        gap: 10px;
-      }
+/* 5. Fade-in efekt za slike v galeriji */
+.gallery img {
+  opacity: 0;
+  transition: opacity 1s ease;
+}
+.gallery img.loaded {
+  opacity: 1;
+}
+.falling {
+  position: fixed;
+  top: -50px;
+  pointer-events: none;
+  animation: fall linear forwards;
+  z-index: 0;
+}
 
-      .hero {
-        padding: 40px 10px;
-        min-height: auto;
-      }
+@keyframes fall {
+  to {
+    transform: translateY(110vh) rotate(360deg);
+    opacity: 0;
+  }
+}
+#storitev ul li a {
+  text-decoration: none;
+  color: inherit;
+  display: block;
+  transition: transform 0.2s, color 0.2s;
+}
 
-      .cta-button {
-        padding: 10px 20px;
-        font-size: 14px;
-      }
+#storitev ul li a:hover {
+  transform: scale(1.05);
+  color: #388E3C;
+}
 
-      table {
-        width: 100%;
-        font-size: 14px;
-      }
-
-      .gallery {
-        grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
-      }
-
-      .section h2 {
-        font-size: 1.6rem;
-      }
-    }
   </style>
 </head>
 <body>
@@ -196,49 +236,59 @@
   </div>
 
   <div class="hero reveal">
-    <h1>Dobrodošli pri Unique Crafter</h1>
-    <p>Urejanje okolice z občutkom za naravo in estetiko</p>
-    <a href="#storitev" class="cta-button">Oglej si naše storitve</a>
+    <h1 class="hero-title">🌿 Dobrodošli pri <span>Unique Crafter</span></h1>
+    <h3 class="typing" id="typing-text"></h3>
+    <a href="#storitev" class="cta-button special-btn">✨ Oglej si naše storitve</a>
   </div>
 
   <div class="section reveal" id="storitev">
-    <h2>Naše storitve</h2>
-    <ul style="text-align:left; max-width:600px; margin:0 auto;">
-      <li>🌱 Košnja trave</li>
-      <li>✂️ Obrezovanje žive meje in dreves</li>
-      <li>🌸 Zasaditev rastlin</li>
-      <li>🪵 Izdelava unikatnih lesenih izdelkov</li>
-      <li>🏡 Urejanje vrtov, dvorišč in okolice</li>
-      <li>🧹 Čiščenje in vzdrževanje zunanjih površin</li>
-    </ul>
+    <h2 style="text-align:center;">Naše storitve</h2>
+   <ul style="text-align:left; max-width:600px; margin:0 auto; list-style:none; padding:0;">
+  <li><a href="#cenik"><h3>🌱 Košnja trave</h3></a></li>
+  <li><a href="#cenik"><h3>✂️ Obrezovanje žive meje in dreves</h3></a></li>
+  <li><a href="#cenik"><h3>🌸 Zasaditev rastlin</h3></a></li>
+  <li><a href="#cenik"><h3>🏡 Urejanje vrtov, dvorišč in okolice</h3></a></li>
+  <li><a href="#cenik"><h3>🧹 Čiščenje in vzdrževanje zunanjih površin</h3></a></li>
+  <li><a href="#cenik"><h3>🔧 Popravila in montaža objektov</h3></a></li>
+  <li><a href="#cenik"><h3>🪜 Delo na višini</h3></a></li>
+  <li><a href="#cenik"><h3>🪵 Izdelava unikatnih lesenih izdelkov</h3></a></li>
+  <li><a href="#cenik"><h3>🐕 Varstvo psov</h3></a></li>
+  <li><a href="#cenik"><h3>❄️ Kidanje snega</h3></a></li>
+</ul>
+
   </div>
 
   <div class="section reveal" id="galerija">
-    <h2>Galerija</h2>
+    <h2 style="text-align:center;">Galerija</h2>
     <div class="gallery">
-      <a href="galerija-vec.html" target="_blank"><img src="slike/OKOLICA1.png" alt="Urejena okolica"></a>
       <a href="galerija-vec.html" target="_blank"><img src="slike/OKOLICA2.png" alt="Zasaditev"></a>
       <a href="galerija-vec.html" target="_blank"><img src="slike/LES1.png" alt="Leseni izdelek"></a>
       <a href="galerija-vec.html" target="_blank"><img src="slike/LES2.png" alt="Unikaten izdelek"></a>
-    </div>
+     </div>
   </div>
 
   <div class="section reveal" id="cenik">
-    <h2>Cenik</h2>
+    <h2 style="text-align:center;">Cenik</h2>
     <table>
       <tr><th>Storitev</th><th>Cena</th></tr>
       <tr><td>Košnja trave</td><td>10€/100m²</td></tr>
       <tr><td>Obrezovanje žive meje</td><td>15€/m</td></tr>
       <tr><td>Obrezovanje visokih dreves</td><td>Po dogovoru</td></tr>
       <tr><td>Zasaditev rastlin</td><td>Po dogovoru</td></tr>
+      <tr><td>Urejanje vrtov, dvorišč in okolice</td><td>Po dogovoru</td></tr>
+      <tr><td>Čiščenje in vzdrževanje zunanjih površin</td><td>Po dogovoru</td></tr>
+      <tr><td>Popravila in montaža objektov</td><td>Po dogovoru</td></tr>
       <tr><td>Unikatni leseni izdelki</td><td>Po dogovoru</td></tr>
+      <tr><td>Delo na višini</td><td>Po dogovoru</td></tr>
+      <tr><td>Varstvo psov</td><td>Po dogovoru</td></tr>
+      <tr><td>Kidanje snega</td><td>Po dogovoru</td></tr>
     </table>
   </div>
 
   <div class="section reveal" id="kontakt">
-    <h2>Kontaktirajte nas</h2>
+    <h2 style="text-align:center;">Kontaktirajte nas</h2>
     <p>📞 Telefon: +386 40 840 401</p>
-    <p>📧 E-pošta: unique.craft@gmail.com</p>
+    <p>📧 E-pošta: jarcerik@gmail.com</p>
     <p>📸 Instagram: <a href="https://instagram.com/uniquer_craft" target="_blank">@uniquer_craft</a></p>
     <p>📘 Facebook: <a href="https://facebook.com/UniquerCraft" target="_blank">Uniquer Craft</a></p>
   </div>
@@ -247,24 +297,164 @@
     © 2025 Maks Tomšič. Vse pravice pridržane.
   </div>
 
-  <script>
-    function revealOnScroll() {
-      const reveals = document.querySelectorAll('.reveal');
-      for (let i = 0; i < reveals.length; i++) {
-        const windowHeight = window.innerHeight;
-        const elementTop = reveals[i].getBoundingClientRect().top;
-        const revealPoint = 100;
-
-        if (elementTop < windowHeight - revealPoint) {
-          reveals[i].classList.add('active');
-        } else {
-          reveals[i].classList.remove('active');
-        }
-      }
+<script>
+// animacija ob scrollu
+function revealOnScroll() {
+  const reveals = document.querySelectorAll('.reveal');
+  for (let i = 0; i < reveals.length; i++) {
+    const windowHeight = window.innerHeight;
+    const elementTop = reveals[i].getBoundingClientRect().top;
+    const revealPoint = 100;
+    if (elementTop < windowHeight - revealPoint) {
+      reveals[i].classList.add('active');
+    } else {
+      reveals[i].classList.remove('active');
     }
+  }
+}
+window.addEventListener('scroll', revealOnScroll);
+window.addEventListener('load', revealOnScroll);
 
-    window.addEventListener('scroll', revealOnScroll);
-    window.addEventListener('load', revealOnScroll);
-  </script>
+// Sezonski slogani
+const seasonalSlogans = {
+  winter: [
+    "Toplina doma, kljub snegu ❄️",
+    "Naj sneg ne prekrije vaše lepote 🌲",
+    "Zimska pravljica okoli vašega doma ⛄"
+  ],
+  spring: [
+    "Naj vaš vrt zacveti 🌸",
+    "Pomlad prinaša novo življenje 🌱",
+    "Barve narave v polnem razcvetu 🌼"
+  ],
+  summer: [
+    "Zelena oaza v vročih dneh ☀️",
+    "Poletje v senci narave 🌳",
+    "Sprostitev na domačem vrtu 🏡"
+  ],
+  autumn: [
+    "Barve jeseni v vašem vrtu 🍂",
+    "Čarobna jesen pred vašim domom 🍁",
+    "Priprava okolice na zimski počitek 🍂"
+  ],
+  allYear: [
+    "Urejanje okolice z občutkom 🌿",
+    "Narava in estetika v ravnovesju ✨",
+    "Vaš vrt, naš navdih 🌸",
+    "Vsak kotiček potrebuje nego 🌱",
+    "Podrobnosti ustvarjajo popolnost 🎨",
+    "Ljubezen do narave 💚",
+    "Kjer narava sreča dom 🏡",
+    "Vaša okolica, naš ponos 🌞"
+  ]
+};
+
+// Določimo sezono glede na mesec
+const month = new Date().getMonth() + 1; // 1 = januar
+let slogans = [];
+
+if ([12,1,2].includes(month)) {
+  slogans = seasonalSlogans.winter;
+} else if ([3,4,5].includes(month)) {
+  slogans = seasonalSlogans.spring;
+} else if ([6,7,8].includes(month)) {
+  slogans = seasonalSlogans.summer;
+} else if ([9,10,11].includes(month)) {
+  slogans = seasonalSlogans.autumn;
+}
+
+// Vedno dodamo še univerzalne slogane
+slogans = slogans.concat(seasonalSlogans.allYear);
+
+// Premešamo, da se izpisujejo naključno
+function shuffle(array) {
+  for (let i = array.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [array[i], array[j]] = [array[j], array[i]];
+  }
+  return array;
+}
+slogans = shuffle(slogans);
+
+// Tipkanje
+let sloganIndex = 0;
+let charIndex = 0;
+const typingElement = document.getElementById("typing-text");
+
+function type() {
+  if (charIndex < slogans[sloganIndex].length) {
+    typingElement.textContent += slogans[sloganIndex].charAt(charIndex);
+    charIndex++;
+    setTimeout(type, 80);
+  } else {
+    setTimeout(erase, 2000);
+  }
+}
+
+function erase() {
+  if (charIndex > 0) {
+    typingElement.textContent = slogans[sloganIndex].substring(0, charIndex-1);
+    charIndex--;
+    setTimeout(erase, 40);
+  } else {
+    sloganIndex = (sloganIndex + 1) % slogans.length;
+    setTimeout(type, 500);
+  }
+}
+
+document.addEventListener("DOMContentLoaded", function() {
+  if (slogans.length) type();
+});
+
+// 4. Animacija gumba ob kliku
+document.querySelectorAll(".cta-button").forEach(btn => {
+  btn.addEventListener("click", () => {
+    btn.style.transform = "scale(0.95)";
+    setTimeout(() => btn.style.transform = "scale(1)", 150);
+  });
+});
+
+// 5. Fade-in za slike v galeriji
+document.querySelectorAll(".gallery img").forEach(img => {
+  if (img.complete) {
+    img.classList.add("loaded");
+  } else {
+    img.addEventListener("load", () => {
+      img.classList.add("loaded");
+    });
+  }
+});
+
+// Padajoči elementi
+function createFallingElement(symbol) {
+  const el = document.createElement("div");
+  el.classList.add("falling");
+  el.textContent = symbol;
+  el.style.left = Math.random() * 100 + "vw";
+  el.style.fontSize = Math.random() * 20 + 15 + "px";
+  el.style.animationDuration = (Math.random() * 5 + 5) + "s";
+  document.body.appendChild(el);
+
+  setTimeout(() => el.remove(), 10000);
+}
+
+// Glede na sezono izberi simbole
+let seasonSymbols = [];
+if ([12,1,2].includes(month)) {
+  seasonSymbols = ["❄️","❄️","⛄"];
+} else if ([3,4,5].includes(month)) {
+  seasonSymbols = ["🌸","🌼","🌷"];
+} else if ([6,7,8].includes(month)) {
+  seasonSymbols = ["☀️","🌞","🌴"];
+} else if ([9,10,11].includes(month)) {
+  seasonSymbols = ["🍂","🍁"];
+}
+
+// Vsakih nekaj sekund ustvari nov element
+setInterval(() => {
+  const symbol = seasonSymbols[Math.floor(Math.random() * seasonSymbols.length)];
+  createFallingElement(symbol);
+}, 1500);
+</script>
 </body>
 </html>
