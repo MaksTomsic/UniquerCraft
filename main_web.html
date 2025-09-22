@@ -223,6 +223,19 @@ ul li h3:hover {
   transform: scale(1.05);
   color: #388E3C;
 }
+#cenik table tr {
+  background-color: white;
+  transition: background-color 2s ease;
+}
+
+.highlight {
+  background-color: #8dda8f !important; /* svetlo zelena */
+}
+/* Odmik za vse vrstice v ceniku */
+[id^="cenik-"] {
+  scroll-margin-top: 120px; /* prilagodi glede na višino headerja */
+}
+
 
   </style>
 </head>
@@ -244,16 +257,17 @@ ul li h3:hover {
   <div class="section reveal" id="storitev">
     <h2 style="text-align:center;">Naše storitve</h2>
    <ul style="text-align:left; max-width:600px; margin:0 auto; list-style:none; padding:0;">
-  <li><a href="#cenik"><h3>🌱 Košnja trave</h3></a></li>
-  <li><a href="#cenik"><h3>✂️ Obrezovanje žive meje in dreves</h3></a></li>
-  <li><a href="#cenik"><h3>🌸 Zasaditev rastlin</h3></a></li>
-  <li><a href="#cenik"><h3>🏡 Urejanje vrtov, dvorišč in okolice</h3></a></li>
-  <li><a href="#cenik"><h3>🧹 Čiščenje in vzdrževanje zunanjih površin</h3></a></li>
-  <li><a href="#cenik"><h3>🔧 Popravila in montaža objektov</h3></a></li>
-  <li><a href="#cenik"><h3>🪜 Delo na višini</h3></a></li>
-  <li><a href="#cenik"><h3>🪵 Izdelava unikatnih lesenih izdelkov</h3></a></li>
-  <li><a href="#cenik"><h3>🐕 Varstvo psov</h3></a></li>
-  <li><a href="#cenik"><h3>❄️ Kidanje snega</h3></a></li>
+  <li><a href="#cenik" data-target="cenik-kosnja"><h3>🌱 Košnja trave</h3></a></li>
+  <li><a href="#cenik" data-target="cenik-zivameja"><h3>✂️ Obrezovanje žive meje</h3></a></li>
+  <li><a href="#cenik" data-target="cenik-drevesa"><h3>🌳 Obrezovanje visokih dreves</h3></a></li>
+  <li><a href="#cenik" data-target="cenik-zasaditev"><h3>🌸 Zasaditev rastlin</h3></a></li>
+  <li><a href="#cenik" data-target="cenik-urejanje"><h3>🏡 Urejanje vrtov, dvorišč in okolice</h3></a></li>
+  <li><a href="#cenik" data-target="cenik-povrsine"><h3>🧹 Čiščenje in vzdrževanje zunanjih površin</h3></a></li>
+  <li><a href="#cenik" data-target="cenik-objekti"><h3>🔧 Popravila in montaža objektov</h3></a></li>
+  <li><a href="#cenik" data-target="cenik-les"><h3>🪵 Unikatni leseni izdelki</h3></a></li>
+  <li><a href="#cenik" data-target="cenik-visina"><h3>🪜 Delo na višini</h3></a></li>
+  <li><a href="#cenik" data-target="cenik-pes"><h3>🐕 Varstvo psov</h3></a></li>
+  <li><a href="#cenik" data-target="cenik-sneg"><h3>❄️ Kidanje snega</h3></a></li>
 </ul>
 
   </div>
@@ -271,17 +285,17 @@ ul li h3:hover {
     <h2 style="text-align:center;">Cenik</h2>
     <table>
       <tr><th>Storitev</th><th>Cena</th></tr>
-      <tr><td>Košnja trave</td><td>10€/100m²</td></tr>
-      <tr><td>Obrezovanje žive meje</td><td>15€/m</td></tr>
-      <tr><td>Obrezovanje visokih dreves</td><td>Po dogovoru</td></tr>
-      <tr><td>Zasaditev rastlin</td><td>Po dogovoru</td></tr>
-      <tr><td>Urejanje vrtov, dvorišč in okolice</td><td>Po dogovoru</td></tr>
-      <tr><td>Čiščenje in vzdrževanje zunanjih površin</td><td>Po dogovoru</td></tr>
-      <tr><td>Popravila in montaža objektov</td><td>Po dogovoru</td></tr>
-      <tr><td>Unikatni leseni izdelki</td><td>Po dogovoru</td></tr>
-      <tr><td>Delo na višini</td><td>Po dogovoru</td></tr>
-      <tr><td>Varstvo psov</td><td>Po dogovoru</td></tr>
-      <tr><td>Kidanje snega</td><td>Po dogovoru</td></tr>
+      <tr id="cenik-kosnja"><td>Košnja trave</td><td>10€/100m²</td></tr>
+      <tr id="cenik-zivameja"><td>Obrezovanje žive meje</td><td>15€/m</td></tr>
+      <tr id="cenik-drevesa"><td>Obrezovanje visokih dreves</td><td>Po dogovoru</td></tr>
+      <tr id="cenik-zasaditev"><td>Zasaditev rastlin</td><td>Po dogovoru</td></tr>
+      <tr id="cenik-urejanje"><td>Urejanje vrtov, dvorišč in okolice</td><td>Po dogovoru</td></tr>
+      <tr id="cenik-povrsine"><td>Čiščenje in vzdrževanje zunanjih površin</td><td>Po dogovoru</td></tr>
+      <tr id="cenik-objekti"><td>Popravila in montaža objektov</td><td>Po dogovoru</td></tr>
+      <tr id="cenik-les"><td>Unikatni leseni izdelki</td><td>Po dogovoru</td></tr>
+      <tr id="cenik-visina"><td>Delo na višini</td><td>Po dogovoru</td></tr>
+      <tr id="cenik-pes"><td>Varstvo psov</td><td>Po dogovoru</td></tr>
+      <tr id="cenik-sneg"><td>Kidanje snega</td><td>Po dogovoru</td></tr>
     </table>
   </div>
 
@@ -455,6 +469,26 @@ setInterval(() => {
   const symbol = seasonSymbols[Math.floor(Math.random() * seasonSymbols.length)];
   createFallingElement(symbol);
 }, 1500);
+// Highlight vrstice v ceniku ob kliku na storitev
+// Klik na storitev → scroll na cenik + highlight prave vrstice
+document.querySelectorAll('#storitev ul li a').forEach(link => {
+  link.addEventListener('click', function(e) {
+    e.preventDefault(); // prepreči privzeto skakanje
+    const targetRowId = this.dataset.target; // preberemo data-target
+    const targetRow = document.getElementById(targetRowId);
+
+    // premaknemo na začetek cenika
+    document.getElementById("cenik").scrollIntoView({ behavior: "smooth" });
+
+    if (targetRow) {
+      setTimeout(() => {
+        targetRow.classList.add('highlight');
+        setTimeout(() => targetRow.classList.remove('highlight'), 2000);
+      }, 600); // počakamo, da se scroll zaključi
+    }
+  });
+});
+
 </script>
 </body>
 </html>
