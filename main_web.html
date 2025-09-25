@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Unique Crafter</title>
+  <title>Uniquer Craft</title>
   <head>
   <meta charset="UTF-8">
 
@@ -249,8 +249,58 @@ ul li h3:hover {
 [id^="cenik-"] {
   scroll-margin-top: 120px; /* prilagodi glede na višino headerja */
 }
+#komentar-box {
+  transition: opacity 0.5s ease;
+}
+.komentar-kartica {
+  background-color: #f9f9f9;
+  border-radius: 12px;
+  padding: 25px;
+  max-width: 700px;
+  margin: 30px auto;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  transition: opacity 0.6s ease;
+  opacity: 1;
+}
 
+.komentar-ime {
+  font-weight: 600;
+  font-size: 1.2rem;
+  margin-bottom: 5px;
+  color: #2E7D32;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
 
+.komentar-zvezdice {
+  color: #FFD700;
+  font-size: 1.3rem;
+  letter-spacing: 2px;
+  margin-bottom: 15px;
+}
+
+.komentar-besedilo {
+  font-style: italic;
+  font-size: 1.1rem;
+  color: #444;
+  line-height: 1.6;
+}
+.komentar-kartica {
+  background-color: #f9f9f9;
+  border-radius: 12px;
+  padding: 25px;
+  max-width: 700px;
+  margin: 30px auto;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  opacity: 1;
+  transition: opacity 0.8s ease-in-out;
+}
+
+.komentar-kartica.fade-out {
+  opacity: 0;
+}
   </style>
 </head>
 <body>
@@ -263,7 +313,7 @@ ul li h3:hover {
   </div>
 
   <div class="hero reveal">
-    <h1 class="hero-title">🌿 Dobrodošli pri <span>Unique Crafter</span></h1>
+    <h1 class="hero-title">🌿 Dobrodošli pri <span>Uniquer Craft</span></h1>
     <h3 class="typing" id="typing-text"></h3>
     <a href="#storitev" class="cta-button special-btn">✨ Oglej si naše storitve</a>
   </div>
@@ -294,7 +344,14 @@ ul li h3:hover {
       <a href="galerija-vec.html" ><img src="slike/LES2.png" alt="Unikaten izdelek"></a>
      </div>
   </div>
-
+<div class="section reveal" id="komentarji">
+  <h2 style="text-align:center;">Kaj pravijo naše stranke</h2>
+  <div id="komentar-box" class="komentar-kartica">
+    <div id="komentar-ime" style="font-weight:bold; font-size:1.1rem;"></div>
+    <div id="komentar-zvezdice" style="color:#FFD700; font-size:1.2rem;"></div>
+    <div id="komentar-besedilo" style="font-style:italic; font-size:1.1rem; margin-top:10px;"></div>
+  </div>
+</div>
   <div class="section reveal" id="cenik">
     <h2 style="text-align:center;">Cenik</h2>
     <table>
@@ -317,6 +374,8 @@ ul li h3:hover {
     <h2 style="text-align:center;">Kontaktirajte nas</h2>
     <p>📞 Telefon: +386 40 840 401</p>
     <p>📧 E-pošta: jarcerik@gmail.com</p>
+    <p>Lokacija: Mali Lipoglav 70 </p>
+    <p>1293 Šmarje-Sap</p>
     <p>📸 Instagram: <a href="https://instagram.com/uniquer_craft" target="_blank">@uniquer_craft</a></p>
     <p>📘 Facebook: <a href="https://facebook.com/UniquerCraft" target="_blank">Uniquer Craft</a></p>
   </div>
@@ -326,6 +385,7 @@ ul li h3:hover {
   </div>
 
 <script>
+  
 // animacija ob scrollu
 function revealOnScroll() {
   const reveals = document.querySelectorAll('.reveal');
@@ -483,24 +543,56 @@ setInterval(() => {
   const symbol = seasonSymbols[Math.floor(Math.random() * seasonSymbols.length)];
   createFallingElement(symbol);
 }, 1500);
-// Highlight vrstice v ceniku ob kliku na storitev
-// Klik na storitev → scroll na cenik + highlight prave vrstice
+// Klik na storitev → preusmeri na razširjeno galerijo
 document.querySelectorAll('#storitev ul li a').forEach(link => {
   link.addEventListener('click', function(e) {
     e.preventDefault(); // prepreči privzeto skakanje
-    const targetRowId = this.dataset.target; // preberemo data-target
-    const targetRow = document.getElementById(targetRowId);
-
-    // premaknemo na začetek cenika
-    document.getElementById("cenik").scrollIntoView({ behavior: "smooth" });
-
-    if (targetRow) {
-      setTimeout(() => {
-        targetRow.classList.add('highlight');
-        setTimeout(() => targetRow.classList.remove('highlight'), 2000);
-      }, 600); // počakamo, da se scroll zaključi
-    }
+    window.location.href = "galerija-vec.html";
   });
+});
+document.addEventListener("DOMContentLoaded", () => {
+  const komentarji = [
+    { ime: "Ana P.", ocena: 5, besedilo: "Vrt je po ureditvi videti čudovito. Zelo priporočam." },
+    { ime: "Marko Z.", ocena: 4.5, besedilo: "Hitro in profesionalno obrezovanje dreves. Brez zapletov." },
+    { ime: "Nina K.", ocena: 5, besedilo: "Leseni izdelki so res nekaj posebnega. Kakovost presega pričakovanja." },
+    { ime: "Tomaž R.", ocena: 5, besedilo: "Ekipa je bila točna, prijazna in zelo učinkovita." },
+    { ime: "Petra M.", ocena: 4.5, besedilo: "Po zasaditvi rastlin je naš vrt končno zaživel." },
+    { ime: "Luka D.", ocena: 5, besedilo: "Odlična izkušnja z varstvom psa. Vse je potekalo brez težav." },
+    { ime: "Jana S.", ocena: 5, besedilo: "Živa meja je končno urejena, kot sem si želela." },
+    { ime: "Gregor H.", ocena: 4.5, besedilo: "Kidanje snega je bilo hitro in natančno. Hvala." },
+    { ime: "Maja L.", ocena: 5, besedilo: "Zelo zadovoljna z urejanjem okolice. Vse je bilo kot dogovorjeno." },
+    { ime: "David B.", ocena: 5, besedilo: "Popravila na vrtni lopi so bila izvedena brezhibno." }
+  ];
+
+  let komentarIndex = 0;
+  const imeEl = document.getElementById("komentar-ime");
+  const zvezdiceEl = document.getElementById("komentar-zvezdice");
+  const besediloEl = document.getElementById("komentar-besedilo");
+  const boxEl = document.getElementById("komentar-box");
+
+  function generirajZvezdice(ocena) {
+    const polne = Math.floor(ocena);
+    const pol = ocena % 1 >= 0.5 ? 1 : 0;
+    const prazne = 5 - polne - pol;
+    return "★".repeat(polne) + (pol ? "½" : "") + "☆".repeat(prazne);
+  }
+
+  function prikaziKomentar() {
+    boxEl.classList.add("fade-out");
+
+    setTimeout(() => {
+      const komentar = komentarji[komentarIndex];
+      imeEl.textContent = komentar.ime;
+      zvezdiceEl.innerHTML = generirajZvezdice(komentar.ocena);
+      besediloEl.textContent = komentar.besedilo;
+
+      boxEl.classList.remove("fade-out");
+      komentarIndex = (komentarIndex + 1) % komentarji.length;
+    }, 600);
+  }
+
+  prikaziKomentar();
+  setInterval(prikaziKomentar, 6000);
 });
 
 </script>
