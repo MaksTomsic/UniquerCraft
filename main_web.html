@@ -301,6 +301,55 @@ ul li h3:hover {
 .komentar-kartica.fade-out {
   opacity: 0;
 }
+.komentar-kartica {
+  background: linear-gradient(135deg, #ffffff, #f0f4f0);
+  border-radius: 16px;
+  padding: 30px;
+  max-width: 700px;
+  margin: 30px auto;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.1);
+  opacity: 1;
+  transition: opacity 0.8s ease-in-out;
+}
+
+.komentar-kartica.fade-out {
+  opacity: 0;
+}
+
+.komentar-header {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  margin-bottom: 15px;
+}
+
+.komentar-avatar {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  object-fit: cover;
+  box-shadow: 0 0 6px rgba(0,0,0,0.1);
+}
+
+.komentar-ime {
+  font-weight: 600;
+  font-size: 1.2rem;
+  color: #2E7D32;
+}
+
+.komentar-zvezdice {
+  color: #FFD700;
+  font-size: 1.3rem;
+  letter-spacing: 2px;
+}
+
+.komentar-besedilo {
+  font-style: italic;
+  font-size: 1.1rem;
+  color: #444;
+  line-height: 1.6;
+  margin-top: 10px;
+}
   </style>
 </head>
 <body>
@@ -327,7 +376,7 @@ ul li h3:hover {
   <li><a href="#cenik" data-target="cenik-zasaditev"><h3>🌸 Zasaditev rastlin</h3></a></li>
   <li><a href="#cenik" data-target="cenik-urejanje"><h3>🏡 Urejanje vrtov, dvorišč in okolice</h3></a></li>
   <li><a href="#cenik" data-target="cenik-povrsine"><h3>🧹 Čiščenje in vzdrževanje zunanjih površin</h3></a></li>
-  <li><a href="#cenik" data-target="cenik-objekti"><h3>🔧 Popravila in montaža objektov</h3></a></li>
+  <li><a href="#cenik" data-target="cenik-objekti"><h3>🔧 Popravila in montaža na objektov</h3></a></li>
   <li><a href="#cenik" data-target="cenik-les"><h3>🪵 Unikatni leseni izdelki</h3></a></li>
   <li><a href="#cenik" data-target="cenik-visina"><h3>🪜 Delo na višini</h3></a></li>
   <li><a href="#cenik" data-target="cenik-pes"><h3>🐕 Varstvo psov</h3></a></li>
@@ -345,11 +394,16 @@ ul li h3:hover {
      </div>
   </div>
 <div class="section reveal" id="komentarji">
-  <h2 style="text-align:center;">Kaj pravijo naše stranke</h2>
+  <h2 style="text-align:center;">Mnenja strank</h2>
   <div id="komentar-box" class="komentar-kartica">
-    <div id="komentar-ime" style="font-weight:bold; font-size:1.1rem;"></div>
-    <div id="komentar-zvezdice" style="color:#FFD700; font-size:1.2rem;"></div>
-    <div id="komentar-besedilo" style="font-style:italic; font-size:1.1rem; margin-top:10px;"></div>
+    <div class="komentar-header">
+      <img id="komentar-avatar" class="komentar-avatar" src="" alt="Avatar stranke">
+      <div>
+        <div id="komentar-ime" class="komentar-ime"></div>
+        <div id="komentar-zvezdice" class="komentar-zvezdice"></div>
+      </div>
+    </div>
+    <div id="komentar-besedilo" class="komentar-besedilo"></div>
   </div>
 </div>
   <div class="section reveal" id="cenik">
@@ -362,7 +416,7 @@ ul li h3:hover {
       <tr id="cenik-zasaditev"><td>Zasaditev rastlin</td><td>Po dogovoru</td></tr>
       <tr id="cenik-urejanje"><td>Urejanje vrtov, dvorišč in okolice</td><td>Po dogovoru</td></tr>
       <tr id="cenik-povrsine"><td>Čiščenje in vzdrževanje zunanjih površin</td><td>Po dogovoru</td></tr>
-      <tr id="cenik-objekti"><td>Popravila in montaža objektov</td><td>Po dogovoru</td></tr>
+      <tr id="cenik-objekti"><td>Popravila in montaža na objektov</td><td>Po dogovoru</td></tr>
       <tr id="cenik-les"><td>Unikatni leseni izdelki</td><td>Po dogovoru</td></tr>
       <tr id="cenik-visina"><td>Delo na višini</td><td>Po dogovoru</td></tr>
       <tr id="cenik-pes"><td>Varstvo psov</td><td>Po dogovoru</td></tr>
@@ -370,15 +424,16 @@ ul li h3:hover {
     </table>
   </div>
 
-  <div class="section reveal" id="kontakt">
-    <h2 style="text-align:center;">Kontaktirajte nas</h2>
-    <p>📞 Telefon: +386 40 840 401</p>
-    <p>📧 E-pošta: jarcerik@gmail.com</p>
-    <p>Lokacija: Mali Lipoglav 70 </p>
-    <p>1293 Šmarje-Sap</p>
-    <p>📸 Instagram: <a href="https://instagram.com/uniquer_craft" target="_blank">@uniquer_craft</a></p>
-    <p>📘 Facebook: <a href="https://facebook.com/UniquerCraft" target="_blank">Uniquer Craft</a></p>
+<div class="section reveal kontakt-kartica" id="kontakt">
+  <h2 style="text-align:center;">Kontaktirajte nas</h2>
+  <div class="kontakt-vsebina">
+    <p><strong>📞 Telefon:</strong> +386 40 840 401</p>
+    <p><strong>📧 E-pošta:</strong> <a href="mailto:jarcerik@gmail.com">jarcerik@gmail.com</a></p>
+    <p><strong>📍 Lokacija:</strong> Mali Lipoglav 70, 1293 Šmarje-Sap</p>
+    <p><strong>📸 Instagram:</strong> <a href="https://instagram.com/uniquer_craft" target="_blank">@uniquer_craft</a></p>
+    <p><strong>📘 Facebook:</strong> <a href="https://facebook.com/UniquerCraft" target="_blank">Uniquer Craft</a></p>
   </div>
+</div>
 
   <div class="footer">
     © 2025 Maks Tomšič. Vse pravice pridržane.
@@ -550,31 +605,35 @@ document.querySelectorAll('#storitev ul li a').forEach(link => {
     window.location.href = "galerija-vec.html";
   });
 });
+
+
 document.addEventListener("DOMContentLoaded", () => {
   const komentarji = [
-    { ime: "Ana P.", ocena: 5, besedilo: "Vrt je po ureditvi videti čudovito. Zelo priporočam." },
-    { ime: "Marko Z.", ocena: 4.5, besedilo: "Hitro in profesionalno obrezovanje dreves. Brez zapletov." },
-    { ime: "Nina K.", ocena: 5, besedilo: "Leseni izdelki so res nekaj posebnega. Kakovost presega pričakovanja." },
-    { ime: "Tomaž R.", ocena: 5, besedilo: "Ekipa je bila točna, prijazna in zelo učinkovita." },
-    { ime: "Petra M.", ocena: 4.5, besedilo: "Po zasaditvi rastlin je naš vrt končno zaživel." },
-    { ime: "Luka D.", ocena: 5, besedilo: "Odlična izkušnja z varstvom psa. Vse je potekalo brez težav." },
-    { ime: "Jana S.", ocena: 5, besedilo: "Živa meja je končno urejena, kot sem si želela." },
-    { ime: "Gregor H.", ocena: 4.5, besedilo: "Kidanje snega je bilo hitro in natančno. Hvala." },
-    { ime: "Maja L.", ocena: 5, besedilo: "Zelo zadovoljna z urejanjem okolice. Vse je bilo kot dogovorjeno." },
-    { ime: "David B.", ocena: 5, besedilo: "Popravila na vrtni lopi so bila izvedena brezhibno." }
+    { ime: "Ana P.", ocena: 5, besedilo: "Vrt je po ureditvi videti čudovito. Zelo priporočam.", avatar: "slike/avatar1.jpg" },
+    { ime: "Marko Z.", ocena: 4.5, besedilo: "Hitro in profesionalno obrezovanje dreves. Brez zapletov.", avatar: "slike/avatar2.jpg" },
+    { ime: "Nina K.", ocena: 5, besedilo: "Leseni izdelki so res nekaj posebnega. Kakovost presega pričakovanja.", avatar: "slike/avatar3.jpg" },
+    { ime: "Tomaž R.", ocena: 5, besedilo: "Ekipa je bila točna, prijazna in zelo učinkovita.", avatar: "slike/avatar4.jpg" },
+    { ime: "Petra M.", ocena: 4.5, besedilo: "Po zasaditvi rastlin je naš vrt končno zaživel.", avatar: "slike/avatar5.jpg" },
+    { ime: "Luka D.", ocena: 5, besedilo: "Odlična izkušnja z varstvom psa. Vse je potekalo brez težav.", avatar: "slike/avatar6.jpg" },
+    { ime: "Jana S.", ocena: 5, besedilo: "Živa meja je končno urejena, kot sem si želela.", avatar: "slike/avatar7.jpg" },
+    { ime: "Gregor H.", ocena: 4.5, besedilo: "Kidanje snega je bilo hitro in natančno. Hvala.", avatar: "slike/avatar8.jpg" },
+    { ime: "Maja L.", ocena: 5, besedilo: "Zelo zadovoljna z urejanjem okolice. Vse je bilo kot dogovorjeno.", avatar: "slike/avatar9.jpg" },
+    { ime: "David B.", ocena: 5, besedilo: "Popravila na vrtni lopi so bila izvedena brezhibno.", avatar: "slike/avatar10.jpg" }
   ];
 
   let komentarIndex = 0;
   const imeEl = document.getElementById("komentar-ime");
   const zvezdiceEl = document.getElementById("komentar-zvezdice");
   const besediloEl = document.getElementById("komentar-besedilo");
+  const avatarEl = document.getElementById("komentar-avatar");
   const boxEl = document.getElementById("komentar-box");
 
   function generirajZvezdice(ocena) {
     const polne = Math.floor(ocena);
     const pol = ocena % 1 >= 0.5 ? 1 : 0;
     const prazne = 5 - polne - pol;
-    return "★".repeat(polne) + (pol ? "½" : "") + "☆".repeat(prazne);
+    const polovicna = pol ? "⯨" : "";
+    return "★".repeat(polne) + polovicna + "☆".repeat(prazne);
   }
 
   function prikaziKomentar() {
@@ -585,6 +644,7 @@ document.addEventListener("DOMContentLoaded", () => {
       imeEl.textContent = komentar.ime;
       zvezdiceEl.innerHTML = generirajZvezdice(komentar.ocena);
       besediloEl.textContent = komentar.besedilo;
+      avatarEl.src = komentar.avatar;
 
       boxEl.classList.remove("fade-out");
       komentarIndex = (komentarIndex + 1) % komentarji.length;
